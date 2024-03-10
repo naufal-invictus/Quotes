@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-image: url('PC.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            color: white;
+            margin: 122px;
+            
+            background: rgba(0, 0, 0, 0.226);
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+
+
+        }
+
+        #generate-button {
+            font-family: Roboto, sans-serif;
+            font-weight: 0;
+            font-size: 15px;
+            color: #fff;
+            background-color: #017cce;
+            padding: 10px 30px;
+            border: solid #ffffff 3px;
+            box-shadow: rgb(0, 217, 255) 0px 0px 30px 1px;
+            border-radius: 10px;
+            transition: 1048ms;
+            transform: translateY(0);
+            flex-direction: row;
+            align-items: center;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        #generate-button:hover {
+
+            transition: 1048ms;
+            padding: 10px 50px;
+            transform: translateY(-4px);
+            background-color: #44b4ff;
+            color: #000000;
+            border: solid 3px #ffffff;
+        }
+        #quote-text{
+            display: flex;
+            width: 400px;
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            font-size: 18px;
+            
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                background-image: url('Mobil.jpg');
+                background-size: cover;
+                width: 100%;
+                margin: 0;
+            }
+
+            .container {
+                color: white;
+                margin: 12px;
+                text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            }
+            #quote-text{
+            display: flex;
+            width: 300px;
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            font-size: 18px;
+            
+        }
+            #theme-select {
+                margin-top: 10px;
+            }
+
+            #theme-select label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            #theme-select select {
+                padding: 5px;
+                font-size: 16px;
+            }
+
+            #generate-button {
+                font-family: Roboto, sans-serif;
+                font-weight: 0;
+                font-size: 15px;
+                color: #fff;
+                background-color: #00b53c;
+                padding: 10px 30px;
+                border: solid #ffff00 3px;
+                box-shadow: rgb(255, 255, 0) 0px 0px 50px 10px;
+                border-radius: 10px;
+                transition: 1048ms;
+                transform: translateY(0);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+
+            #generate-button:hover {
+
+                transition: 1048ms;
+                padding: 10px 50px;
+                transform: translateY(-4px);
+                background-color: #f6ff00;
+                color: #000000;
+                border: solid 3px #b7ff00;
+            }
+        }
+    </style>
+    <title>Quotes</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="theme-select">
+            <label for="theme">Tema:</label>
+            <select id="theme">
+                <option value="fakta">Fakta Kehidupan</option>
+                <option value="hadits">Hadits</option>
+                <option value="motivasi">Motivasi</option>
+                <option value="cinta">Cinta</option>
+                <option value="kehidupan">Kehidupan</option>
+                <option value="lucu">Lucu</option>
+            </select>
+        </div>
+        <div id="quote-container" class="quote-container">
+            <p id="quote-text"></p>
+            <p id="author"></p>
+        </div>
+        <button id="generate-button">Tampilkan Quotes Baru</button>
+
+    </div>
+
+    <script>
+        const quotes = {
+            fakta:[
+                "Semakin rusak suatu negara, maka akan makin banyak aturan. (Tacitus)",
+                "Manusia terlahir dalam kondisi tidak tahu, bukan bodoh. Mereka di buat bodoh oleh sistem pedidikan. (Bertrand Russel)",
+                "Jika kita berbohong kepada pemerintah maka itu disebut kejahatan. Jika pemerintah bohong kepada kita maka itu disebut politik. (Bill Murray)",
+                "Kebebasan bukanlah memilih antara hitam dan putih, namun kebebasan adalah bisa menolak terhadap pilihan-pilihan yang sudah di tentukan. (Theodor)",
+                "kebanyakan musuh kita adalah orang yang pernah kita tolong. (Unknown)",
+            ],
+            hadits:[
+                "Ketahuilah bahwa kemenangan itu bersama kesabaran, dan jalan keluar itu bersama kesulitan, dan bahwasanya bersama kesulitan ada kemudahan. (HR. Bukhari dan Muslim)",
+                "Sesungguhnya setiap amal perbuatan tergantung pada niatnya. Dan setiap orang akan mendapatkan balasan sesuai dengan niatnya. (HR. Bukhari dan Muslim)",
+                "Menuntut ilmu itu wajib bagi setiap muslim laki-laki dan perempuan. (HR.Muslim)",
+                "Barangsiapa yang beriman kepada Allah dan Hari Akhir, maka hendaklah ia berkata yang baik atau diam. (HR. Bukhari dan Muslim)",
+            ],
+            motivasi: [
+                "Bermimpilah yang besar dan berani gagal.",
+                "Jangan pernah menyerah pada mimpimu.",
+                "Kesuksesan adalah hasil dari kerja keras dan ketekunan.",
+                "Kegagalan adalah batu loncatan menuju kesuksesan.",
+                "Tetaplah positif dan fokus pada tujuanmu.",
+            ],
+            cinta: [
+                "Nikah dulu biar halal, kalo udah nikah infokan developer ini untuk update situs.",
+
+            ],
+            kehidupan: [
+                "Hidup adalah tentang perjalanan, bukan tujuan.",
+                "Nikmati setiap momen dalam hidup.",
+                "Belajarlah dari masa lalu dan teruslah maju.",
+                "Hadapilah setiap tantangan dengan berani.",
+                "Hidup adalah anugerah, maka bersyukurlah.",
+            ],
+            lucu: [
+                "Jangan terlalu serius dengan hidup.",
+                "Hidup ini terlalu singkat untuk tidak bahagia.",
+            ]
+        };
+
+        const generateQuote = () => {
+            const theme = document.getElementById('theme').value;
+            const randomIndex = Math.floor(Math.random() * quotes[theme].length);
+            const quoteText = quotes[theme][randomIndex];
+
+            document.getElementById('quote-text').textContent = quoteText;
+        };
+
+        document.getElementById('generate-button').addEventListener('click', generateQuote);
+
+        generateQuote();
+    </script>
+</body>
+
+</html>
